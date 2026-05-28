@@ -173,6 +173,19 @@ function App() {
   // ====================================
   // QUIZ QUESTION SCREEN (Main UI)
   // ====================================
+  
+  // If no questions loaded, show error
+  if (questions.length === 0) {
+    return (
+      <div className="app-container">
+        <div className="quiz-card">
+          <p className="loading">Error: Could not load quiz questions.</p>
+          <p className="loading">Make sure the backend server is running on http://localhost:5000</p>
+        </div>
+      </div>
+    );
+  }
+
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
