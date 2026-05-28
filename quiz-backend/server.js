@@ -51,8 +51,8 @@ const quizQuestions = [
   },
   {
     id: 5,
-    question: "What is 2 + 2?",
-    options: ["3", "4", "5", "6"],
+    question: "What is the square root of 256?",
+    options: ["12", "16", "18", "20"],
     correctAnswer: 1,
   },
 ];

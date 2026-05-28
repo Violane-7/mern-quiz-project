@@ -9,21 +9,21 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
 /* ====================================
    APP CONTAINER
    ==================================== */
 
-/* Main container that centers content */
 .app-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20px;
 }
 
@@ -31,15 +31,15 @@ body {
    QUIZ CARD
    ==================================== */
 
-/* White card containing quiz content */
 .quiz-card {
-  background-color: white;
-  border-radius: 8px;
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9ff 100%);
+  border-radius: 16px;
   padding: 40px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 600px;
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* ====================================
@@ -57,10 +57,12 @@ body {
    ==================================== */
 
 .progress {
-  font-size: 14px;
-  color: #999;
-  margin-bottom: 20px;
-  font-weight: bold;
+  font-size: 13px;
+  color: #667eea;
+  margin-bottom: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* ====================================
@@ -68,18 +70,21 @@ body {
    ==================================== */
 
 .question-text {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 30px;
-  line-height: 1.5;
-  font-weight: 600;
+  font-size: 26px;
+  color: #2d3748;
+  margin-bottom: 35px;
+  line-height: 1.6;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ====================================
    OPTIONS CONTAINER AND BUTTONS
    ==================================== */
 
-/* Container for all option buttons */
 .options-container {
   display: flex;
   flex-direction: column;
@@ -87,34 +92,33 @@ body {
   margin-bottom: 30px;
 }
 
-/* Individual option button */
 .option-button {
-  background-color: #f9f9f9;
-  border: 2px solid #ddd;
-  padding: 15px 20px;
+  background-color: #f7f9fc;
+  border: 2px solid #e2e8f0;
+  padding: 16px 20px;
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   text-align: left;
   font-weight: 500;
-  color: #333;
+  color: #2d3748;
 }
 
-/* Hover effect for option buttons (when not disabled) */
 .option-button:hover:not(:disabled) {
-  background-color: #f0f0f0;
-  border-color: #999;
+  background-color: #edf2f7;
+  border-color: #667eea;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
 }
 
-/* Style when option is selected */
 .option-button.selected {
-  background-color: #007bff;
-  border-color: #007bff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
   color: white;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
 }
 
-/* Disabled state (after answer is selected) */
 .option-button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
@@ -124,91 +128,98 @@ body {
    BUTTONS
    ==================================== */
 
-/* Next button styling */
 .next-button {
-  background-color: #28a745;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 12px 40px;
+  padding: 13px 45px;
   font-size: 16px;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
-  margin-top: 20px;
+  transition: all 0.3s ease;
+  margin-top: 25px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
-/* Next button hover effect */
 .next-button:hover:not(:disabled) {
-  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-/* Next button disabled state */
 .next-button:disabled {
-  background-color: #ccc;
+  background: #cbd5e0;
   cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
-/* Restart button styling */
 .restart-button {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 12px 40px;
+  padding: 13px 45px;
   font-size: 16px;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
-  margin-top: 20px;
+  transition: all 0.3s ease;
+  margin-top: 25px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
-/* Restart button hover effect */
 .restart-button:hover {
-  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
 /* ====================================
    FINAL SCORE SCREEN
    ==================================== */
 
-/* Title for final score screen */
 .final-title {
-  font-size: 28px;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 25px;
   font-weight: 700;
 }
 
-/* Final score text */
 .final-score {
-  font-size: 20px;
-  color: #666;
-  margin-bottom: 15px;
-}
-
-/* Percentage display */
-.percentage {
-  font-size: 48px;
-  font-weight: 700;
-  color: #007bff;
+  font-size: 18px;
+  color: #4a5568;
   margin-bottom: 20px;
+  font-weight: 500;
 }
 
-/* Feedback message from backend */
+.percentage {
+  font-size: 56px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 25px;
+}
+
 .feedback {
   font-size: 18px;
-  color: #28a745;
+  color: #667eea;
   margin-bottom: 30px;
   font-weight: 600;
-  line-height: 1.6;
+  line-height: 1.7;
+  background-color: #f0f4ff;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
 }
 
 /* ====================================
    RESPONSIVE DESIGN
    ==================================== */
 
-/* For small screens (mobile) */
 @media (max-width: 600px) {
   .quiz-card {
     padding: 20px;

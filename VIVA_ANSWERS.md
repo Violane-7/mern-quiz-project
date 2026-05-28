@@ -126,16 +126,16 @@ For this **learning project**, we DO send correct answers to frontend because:
 ```javascript
 // PRODUCTION - Don't send answers:
 const response = {
-  question: "What is 2+2?",
-  options: ["3", "4", "5", "6"]
+  question: "What is the square root of 256?",
+  options: ["12", "16", "18", "20"]
   // ✅ correctAnswer NOT sent
 };
 // Backend verifies answers when score is submitted
 
 // LEARNING PROJECT - We send answers:
 const response = {
-  question: "What is 2+2?",
-  options: ["3", "4", "5", "6"],
+  question: "What is the square root of 256?",
+  options: ["12", "16", "18", "20"],
   correctAnswer: 1  // ✅ Frontend can check immediately
 };
 // Great for learning how everything works!
@@ -298,44 +298,133 @@ Browser: "OK, request allowed!"
 
 ---
 
-## Q10: How did you handle loading state?
+## Q10: Describe the modern UI design and styling.
 
 **Answer:**
 
-I used a `loading` state variable:
+The app features an elegant, modern design:
 
+**Color Scheme:**
+- Purple gradient background: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`
+- White card with light gradient overlay for depth
+- Gradient text effects on titles
+
+**Key CSS Features:**
+```css
+/* Gradient background */
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Gradient text effect */
+.question-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth hover animations */
+.option-button:hover {
+  transform: translateX(4px);  /* Slide right on hover */
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+.next-button:hover {
+  transform: translateY(-2px);  /* Lift up on hover */
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+```
+
+**UX Improvements:**
+- Smooth transitions (0.3s ease)
+- Box shadows for depth
+- Rounded corners (10px) for modern look
+- Responsive design for all devices
+- Professional typography (Segoe UI)
+
+---
+
+## Q11: How did you handle backend connection errors?
+
+**Answer:**
+
+Added error checking to gracefully handle backend failures:
+
+**In App.js:**
 ```javascript
-const [isLoading, setIsLoading] = useState(true);
-
 useEffect(() => {
   const fetchQuestions = async () => {
     try {
-      const response = await fetch("...");
+      const response = await fetch("http://localhost:5000/questions");
       const data = await response.json();
       setQuestions(data);
-      setIsLoading(false);  // ✅ Stop loading after fetch
+      setIsLoading(false);
     } catch (error) {
-      setIsLoading(false);  // ✅ Stop even if error
+      console.error("Error fetching questions:", error);
+      setIsLoading(false);  // Still stop loading
     }
   };
   fetchQuestions();
 }, []);
 
-// In JSX:
-if (isLoading) {
-  return <p>Loading quiz questions...</p>;
+// In render logic:
+if (questions.length === 0) {
+  return (
+    <div>
+      <p>Error: Could not load quiz questions.</p>
+      <p>Make sure backend is running on http://localhost:5000</p>
+    </div>
+  );
 }
-// ... show quiz questions if not loading
 ```
 
 **Why?**
-- Network requests take time (usually 100-500ms)
-- Show user a loading message instead of blank screen
-- Better user experience
+- **Better UX**: Users see helpful error message instead of crash
+- **Debugging**: Clear instruction on what went wrong
+- **Production-Ready**: Handles unexpected failures gracefully
+
+**Error Prevention:**
+✅ Start backend first, then frontend
+✅ Make sure both are running on correct ports
+✅ Check browser console for CORS errors
+✅ Verify CORS is enabled in server.js
 
 ---
 
-## Q11: Show me the CSS structure.
+## Q12: How do you load quiz questions initially?
+
+**Answer:**
+
+Used `useEffect` hook with empty dependency array:
+
+```javascript
+useEffect(() => {
+  const fetchQuestions = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/questions");
+      const data = await response.json();
+      setQuestions(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching questions:", error);
+      setIsLoading(false);
+    }
+  };
+  
+  fetchQuestions();
+}, []);  // ← Empty array = runs only ONCE when component mounts
+```
+
+**Why this pattern?**
+- `useEffect` runs side effects (like fetching data)
+- Empty dependency array `[]` means: "run only on component mount"
+- Without it, fetch would run on every re-render (wasteful)
+- `async/await` makes code readable compared to `.then()` chains
+
+---
+
+## Q13: Show me how you check if an answer is correct.
 
 **Answer:**
 

@@ -75,6 +75,8 @@ npm install
 
 ### Step 3: Run Both Applications
 
+**Important:** Start the backend FIRST, then the frontend!
+
 **Terminal 1 - Start Backend Server:**
 ```bash
 cd quiz-backend
@@ -94,6 +96,17 @@ npm start
 ```
 
 The browser will open automatically with the quiz app at `http://localhost:3000`
+
+---
+
+## 🎨 UI Features
+
+- **Modern Gradient Design:** Beautiful purple gradient background with elegant styling
+- **Smooth Animations:** Buttons have hover effects with lift animation
+- **Color-Coded Feedback:** Gradient text effects on titles and questions
+- **Responsive Design:** Works perfectly on mobile, tablet, and desktop
+- **Error Handling:** Helpful error messages if backend is not running
+- **Professional Polish:** Shadows, rounded corners, and smooth transitions
 
 ---
 

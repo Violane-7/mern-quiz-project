@@ -24,9 +24,12 @@ Then open http://localhost:3000 in your browser.
 - ✅ Select answers and track score with React state
 - ✅ Get personalized feedback based on performance
 - ✅ Restart quiz functionality
-- ✅ Simple, clean UI
+- ✅ Modern gradient UI with elegant purple theme
+- ✅ Smooth animations and hover effects
+- ✅ Backend connection error handling with helpful messages
 - ✅ No database (questions in array)
 - ✅ Well-commented code
+- ✅ Fully responsive design for mobile & desktop
 
 ## 🔌 API Endpoints
 
